@@ -16,10 +16,11 @@ def docling_document_ingestion_into_qdrant_database() -> None:
     Docling parses PDF, DOCX, PPTX, HTML, and other formats into a rich unified representation including document
     layout, tables etc., making them ready for generative AI workflows like RAG.
     https://python.langchain.com/docs/integrations/document_loaders/docling/
+    https://ds4sd.github.io/docling/examples/rag_langchain/#document-loading
     :return:
     """
     loader = DoclingLoader(
-        file_path=str(EnvironmentVariables.WARFRAME_DROP_TABLES_URL),
+        file_path=str(EnvironmentVariables().WARFRAME_DROP_TABLES_URL),
         export_type=EXPORT_TYPE,
         chunker=HybridChunker(tokenizer=EMBED_MODEL_ID),
     )
@@ -55,3 +56,7 @@ def docling_document_ingestion_into_qdrant_database() -> None:
         url=str(EnvironmentVariables().QDRANT_DATABASE_URL),
         collection_name="warframe",
     )
+
+
+if __name__ == "__main__":
+    docling_document_ingestion_into_qdrant_database()
