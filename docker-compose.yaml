@@ -1,0 +1,26 @@
+services:
+  qdrantdb:
+    image: qdrant/qdrant:${QDRANT_TAG:-latest}
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+
+  ollama:
+    image: ollama/ollama:${OLLAMA_TAG:-latest}
+    env_file:
+      - .env
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: always
+
+  ollama-setup:
+    build: .
+    environment:
+      - OLLAMA_MODELS=deepseek-r1:7b
+    depends_on:
+      - ollama
+
+volumes:
+  ollama:
