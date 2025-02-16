@@ -7,7 +7,6 @@ from langchain_qdrant import QdrantVectorStore
 
 from config import EnvironmentVariables
 
-EMBED_MODEL_ID = "sentence-transformers/all-MiniLM-L6-v2"
 EXPORT_TYPE = ExportType.DOC_CHUNKS
 
 
@@ -22,9 +21,10 @@ def docling_document_ingestion_into_qdrant_database() -> None:
     loader = DoclingLoader(
         file_path=str(EnvironmentVariables().WARFRAME_DROP_TABLES_URL),
         export_type=EXPORT_TYPE,
-        chunker=HybridChunker(tokenizer=EMBED_MODEL_ID),
+        chunker=HybridChunker(
+            tokenizer=EnvironmentVariables().HUGGING_FACE_EMBED_MODEL_ID
+        ),
     )
-
     docling_documents = loader.load()
 
     # Determining the splits
@@ -47,14 +47,16 @@ def docling_document_ingestion_into_qdrant_database() -> None:
         raise ValueError(f"Unexpected export type: {EXPORT_TYPE}")
 
     # Initialize Embeddings
-    embedding = HuggingFaceEmbeddings(model_name=EMBED_MODEL_ID)
+    embedding = HuggingFaceEmbeddings(
+        model_name=EnvironmentVariables().HUGGING_FACE_EMBED_MODEL_ID
+    )
 
     # Create and persist a Qdrant vector database from the chunked documents
     QdrantVectorStore.from_documents(
         documents=splits,
         embedding=embedding,
         url=str(EnvironmentVariables().QDRANT_DATABASE_URL),
-        collection_name="warframe",
+        collection_name=EnvironmentVariables().QDRANT_COLLECTION_NAME,
     )
 
 
