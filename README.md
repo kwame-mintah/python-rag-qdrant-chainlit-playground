@@ -53,3 +53,31 @@ The following environment variables are used by this project.
 | OLLAMA_LLM_MODEL            | The Ollama model to use           | deepseek-r1:1.5b                                                                                         |
 | WARFRAME_DROP_TABLES_URL    | The Warframe drop tables CDN URL  | https://warframe-web-assets.nyc3.cdn.digitaloceanspaces.com/uploads/cms/hnfvc0o3jnfvc873njb03enrf56.html |
 | HUGGING_FACE_EMBED_MODEL_ID | The Hugging Face embeddings name  | sentence-transformers/all-MiniLM-L6-v2                                                                   |
+
+# Running via Docker Compose
+
+An alternative way of running the stack involves using [docker compose](https://docs.docker.com/compose/), the [`docker-compose.yaml`](docker-compose.yaml)
+contains the services needed to run this project, such as starting chainlit, qdrant and ollama.
+
+1. In the root directory start all the services.
+
+```shell
+docker compose up -d
+```
+
+2. Access the services on the following endpoint in your browser. chainlit (http://localhost:8000/) and qdrant (http://localhost:6333/dashboard)
+3. An _optional_ step to run is enabling GPU usage via docker compose, you will need to uncomment out the following lines
+   in the yaml found under the Ollama service, providing better performance with large language models (LLM) models.
+
+```yaml
+...
+#  Enable GPU support using host machine
+#  https://docs.docker.com/compose/how-tos/gpu-support/
+ deploy:
+   resources:
+     reservations:
+       devices:
+         - driver: nvidia
+           count: all
+           capabilities: [ gpu ]
+```
