@@ -34,6 +34,15 @@ services:
     ports:
       - "11434:11434"
     restart: always
+    # Enable GPU support using host machine
+    # https://docs.docker.com/compose/how-tos/gpu-support/
+    #deploy:
+    #  resources:
+    #    reservations:
+    #      devices:
+    #        - driver: nvidia
+    #          count: all
+    #          capabilities: [ gpu ]
 
   ollama-setup:
     build: .
