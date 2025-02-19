@@ -20,22 +20,29 @@ A place to better understand creating a Retrieval-Augmented Generation (RAG) foc
 pip install -r requirements.txt
 ```
 
-2. Start Qdrant and Ollama services found in [docker-compose.yaml](docker-compose.yaml) and wait for
-   both services to be running and Ollama models have been downloaded.
+2. Start [Qdrant](https://qdrant.tech/documentation/quickstart/) vector search database via docker
 
 ```shell
-docker compose up -d
+docker run -p 6333:6333 -p 6334:6334 \
+    -v "$(pwd)/qdrant_storage:/qdrant/storage:z" \
+    qdrant/qdrant
 ```
 
-3. Ingest data into the Qdrant database
+3. Start [Ollama](https://ollama.readthedocs.io/en/quickstart/) and download large language models needed, waiting for the download to complete
+
+```shell
+ollama run deepseek-r1:1.5b
+```
+
+4. Ingest data into the Qdrant database
 
 ```pycon
 python utils/ingest.py
 ```
 
-4. Confirm Qdrant collection has been created with data ingested via the Web UI @ http://localhost:6333/dashboard
+5. Confirm Qdrant collection has been created with data ingested via the Web UI @ http://localhost:6333/dashboard
 
-5. Start Chainlit application
+6. Start Chainlit application
 
 ```pycon
 chainlit run main.py
