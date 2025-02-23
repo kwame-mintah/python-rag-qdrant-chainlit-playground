@@ -55,7 +55,7 @@ The following environment variables are used by this project.
 | Environment Variable        | Description                       | Default Value                                                                                            |
 |-----------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------|
 | QDRANT_DATABASE_URL         | The Qdrant Database URL           | http://localhost:6333                                                                                    |
-| QDRANT_COLLECTION_NAME      | The of the Qdrant collection name | warframe                                                                                                 |
+| QDRANT_COLLECTION_NAME      | The name of the Qdrant collection | warframe                                                                                                 |
 | OLLAMA_URL                  | The Ollama host URL               | http://localhost:11434                                                                                   |
 | OLLAMA_LLM_MODEL            | The Ollama model to use           | deepseek-r1:1.5b                                                                                         |
 | WARFRAME_DROP_TABLES_URL    | The Warframe drop tables CDN URL  | https://warframe-web-assets.nyc3.cdn.digitaloceanspaces.com/uploads/cms/hnfvc0o3jnfvc873njb03enrf56.html |
