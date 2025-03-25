@@ -7,7 +7,7 @@ from langchain_qdrant import QdrantVectorStore
 
 from config import EnvironmentVariables
 
-EXPORT_TYPE = ExportType.DOC_CHUNKS
+EXPORT_TYPE = ExportType.MARKDOWN
 
 
 def docling_document_ingestion_into_qdrant_database() -> None:
