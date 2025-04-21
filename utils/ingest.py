@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from docling.chunking import HybridChunker
 from langchain.text_splitter import MarkdownHeaderTextSplitter
 from langchain_docling import DoclingLoader
@@ -19,7 +21,7 @@ def docling_document_ingestion_into_qdrant_database() -> None:
     :return:
     """
     loader = DoclingLoader(
-        file_path=str(EnvironmentVariables().WARFRAME_DROP_TABLES_URL),
+        file_path=str(Path("data").absolute()),
         export_type=EXPORT_TYPE,
         chunker=HybridChunker(
             tokenizer=EnvironmentVariables().HUGGING_FACE_EMBED_MODEL_ID

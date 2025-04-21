@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import requests
 from bs4 import BeautifulSoup
 from html2text import html2text
@@ -10,7 +12,7 @@ from config import EnvironmentVariables
 def parse_wikimedia_page_and_output_as_markdown(
     url: Url,
     page: str,
-    output: str = "data",
+    output: str = Path("../data").absolute(),
 ) -> None:
     try:
         response = requests.get(
