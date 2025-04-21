@@ -16,9 +16,9 @@ class EnvironmentVariables(BaseSettings):
     OLLAMA_LLM_MODEL: str = Field(
         description="The Ollama model to use", default="deepseek-r1:1.5b"
     )
-    WARFRAME_DROP_TABLES_URL: Url = Field(
-        description="The Warframe drop tables CDN URL",
-        default="https://warframe-web-assets.nyc3.cdn.digitaloceanspaces.com/uploads/cms/hnfvc0o3jnfvc873njb03enrf56.html",
+    WIKIPEDIA_PAGE_API_URL: Url = Field(
+        description="The WikiMedia page API to be queried for parsing",
+        default="https://wiki.warframe.com/api.php",
     )
     HUGGING_FACE_EMBED_MODEL_ID: str = Field(
         description="The Hugging Face embeddings name",
