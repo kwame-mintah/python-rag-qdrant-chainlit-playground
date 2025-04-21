@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/Woile/commitizen
-    rev: v4.2.1
+    rev: v4.6.0
     hooks:
       - id: commitizen
         stages: [ commit-msg ]
