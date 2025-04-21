@@ -52,14 +52,14 @@ chainlit run main.py
 
 The following environment variables are used by this project.
 
-| Environment Variable        | Description                       | Default Value                                                                                            |
-|-----------------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------|
-| QDRANT_DATABASE_URL         | The Qdrant Database URL           | http://localhost:6333                                                                                    |
-| QDRANT_COLLECTION_NAME      | The name of the Qdrant collection | warframe                                                                                                 |
-| OLLAMA_URL                  | The Ollama host URL               | http://localhost:11434                                                                                   |
-| OLLAMA_LLM_MODEL            | The Ollama model to use           | deepseek-r1:1.5b                                                                                         |
-| WARFRAME_DROP_TABLES_URL    | The Warframe drop tables CDN URL  | https://warframe-web-assets.nyc3.cdn.digitaloceanspaces.com/uploads/cms/hnfvc0o3jnfvc873njb03enrf56.html |
-| HUGGING_FACE_EMBED_MODEL_ID | The Hugging Face embeddings name  | sentence-transformers/all-MiniLM-L6-v2                                                                   |
+| Environment Variable        | Description                                      | Default Value                          |
+|-----------------------------|--------------------------------------------------|----------------------------------------|
+| QDRANT_DATABASE_URL         | The Qdrant Database URL                          | http://localhost:6333                  |
+| QDRANT_COLLECTION_NAME      | The name of the Qdrant collection                | warframe                               |
+| OLLAMA_URL                  | The Ollama host URL                              | http://localhost:11434                 |
+| OLLAMA_LLM_MODEL            | The Ollama model to use                          | deepseek-r1:1.5b                       |
+| WIKIPEDIA_PAGE_API_URL      | The WikiMedia page API to be queried for parsing | https://wiki.warframe.com/api.php      |
+| HUGGING_FACE_EMBED_MODEL_ID | The Hugging Face embeddings name                 | sentence-transformers/all-MiniLM-L6-v2 |
 
 # Running via Docker Compose
 
