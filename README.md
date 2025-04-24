@@ -12,6 +12,12 @@ A place to better understand creating a Retrieval-Augmented Generation (RAG) foc
 3. [Docker for desktop](https://docs.docker.com/desktop/)
 4. [Ollama](https://ollama.com/download)
 
+## Architecture
+
+Below is the proposed architecture of how everything will work together.
+
+![Proposed RAG Architecture](./diagram/proposed_rag_architecture.png)
+
 # Usage
 
 1. Install python packages used for the project
