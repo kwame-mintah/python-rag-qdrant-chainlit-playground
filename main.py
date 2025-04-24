@@ -33,6 +33,9 @@ async def on_chat_start():
         url=str(EnvironmentVariables().QDRANT_DATABASE_URL),
     )
 
+    # Default is 20 chunks returned (`k=20`)
+    # Depending on the configuration, reducing the chunks might impact the precision of the retrieved vectors,
+    # potentially affecting the quality of the generated response.
     retriever = vectorstore.as_retriever()
 
     runnable = (
